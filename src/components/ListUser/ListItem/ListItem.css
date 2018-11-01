@@ -4,6 +4,7 @@
   width: 100%;
   height: 80px;
   justify-content: center;
+  align-items: center;
 }
 
 .itemImage{
@@ -25,4 +26,12 @@
   border: 1px solid black;
   margin-top: 8px;
   margin-bottom: 8px;
+}
+
+.active{
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: chartreuse;
+  margin-right: 5px;
 }

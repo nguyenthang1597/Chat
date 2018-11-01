@@ -7,7 +7,7 @@ export default class ListUser extends Component {
     return (
       <div className='listContainer'>
         {
-          this.props.list.map(item => <ListItem name={item.displayName ? item.displayName : item.email.slice(0, item.email.indexOf('@'))}/>)
+          this.props.list.map(item => <ListItem name={item.displayName ? item.displayName : item.email.slice(0, item.email.indexOf('@'))} active={item.isLogin} url={item.photoURL}/>)
         }
       </div>
     )

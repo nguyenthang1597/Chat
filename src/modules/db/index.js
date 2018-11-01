@@ -10,7 +10,8 @@ export const checkIn = (user, cb) => {
       loginAt: new Date().toString(),
       isLogin: true,
       logoutAt: '',
-      email: user.email
+      email: user.email,
+      photoURL: user.photoURL
     }
   }
   playersRef.set(data);

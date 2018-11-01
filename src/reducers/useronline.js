@@ -8,6 +8,7 @@ const initState = {
 
 
 const useronline = (state = initState, action) => {
+  console.log(action.user)
   switch(action.type){
     case USER_LOGIN: 
       return Object.assign({}, state, {
