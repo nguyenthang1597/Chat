@@ -1,28 +1,46 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import asyncComponent from "./components/asyncComponent";
+import { BrowserRouter, Switch } from "react-router-dom";
+import AuthenticateComponent from "./containers/AuthenticateComponent";
+import UnauthenticateComponent from "./containers/UnauthenticateComponent";
+import { createStore, applyMiddleware } from "redux";
+import { Provider } from "react-redux";
+import reducers from "./reducers";
+import { createLogger } from "redux-logger";
+import firebaseApp from "./config/firebase";
+import { setUser } from "./actions/auth";
+import {checkIn} from './modules/db/index'
+import { userLogin } from "./actions/useronline";
+const LoginPage = asyncComponent(() => import("./containers/LoginPage"));
+const Home = asyncComponent(() => import("./components/Home"));
 
-class App extends Component {
+const auth = firebaseApp.auth();
+const db = firebaseApp.database().ref('userlogin');
+const logger = createLogger();
+const store = createStore(reducers, applyMiddleware(logger));
+
+auth.onAuthStateChanged(user => {
+  checkIn(user, err =>  console.log(err));
+  store.dispatch(setUser(null, user));
+});
+
+db.on('value', data => {
+  let val = data.val();
+  let user = val[Object.keys(val)[0]];
+  store.dispatch(userLogin(user));
+})
+export default class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Switch>
+            <AuthenticateComponent path="/" exact={true} component={Home} />
+            <UnauthenticateComponent path="/login" exact={true} component={LoginPage} />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
     );
   }
 }
-
-export default App;

@@ -1,0 +1,13 @@
+.listContainer{
+  min-width: 280px;
+  max-width: 280px;
+  border-right: 1px solid black;
+  top: 65px;
+  position: fixed;
+  height: calc(100% - 70px);
+  overflow-y: scroll;
+  padding-left: 5px;
+}
+.listContainer::-webkit-scrollbar { 
+  display: none; 
+}
