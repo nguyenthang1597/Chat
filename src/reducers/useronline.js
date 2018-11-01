@@ -1,25 +1,22 @@
-import {USER_LOGIN, USER_LOGOUT} from '../actions/useronline';
-
+import { ADD_USER } from '../actions/useronline';
 
 const initState = {
-  list: [],
-  count: 0
+  list: []
 };
 
-
 const useronline = (state = initState, action) => {
-  console.log(action.user)
-  switch(action.type){
-    case USER_LOGIN: 
-      return Object.assign({}, state, {
-        list: state.list.concat(action.user),
-        count: state.count+1
-      })
-    case USER_LOGOUT:
-      return Object.assign({}, state, {
-        list: state.list.filter(item => item.uid != action.uid),
-        count: state.count-1
-      })
+  switch (action.type) {
+    case ADD_USER:
+      let user = state.list.find(item => item.uid === action.user.uid)
+      if (!user)
+        return Object.assign({}, state, {
+          list: state.list.concat(action.user),
+        })
+      else {
+        return Object.assign({}, state, {
+          list: state.list.map(item => item.uid === action.user.uid ? action.user : item)
+        })
+      }
     default:
       return state;
   }

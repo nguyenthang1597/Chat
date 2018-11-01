@@ -14,5 +14,21 @@ export const checkIn = (user, cb) => {
       photoURL: user.photoURL
     }
   }
-  playersRef.set(data);
+  playersRef.update(data);
+}
+
+export const checkOut = (user) => {
+  var playersRef = db.ref("userlogin/");
+  const data = {
+    [user.uid]: {
+      uid: user.uid,
+      displayName: user.displayName,
+      loginAt: '',
+      isLogin: false,
+      logoutAt: new Date().toString(),
+      email: user.email,
+      photoURL: user.photoURL
+    }
+  }
+  playersRef.update(data);
 }

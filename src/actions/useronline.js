@@ -1,17 +1,9 @@
-export const USER_LOGIN = "USER_LOGIN";
-export const USER_LOGOUT = "USER_LOGOUT";
+export const ADD_USER = "ADD_USER";
 
 
-export const userLogin = (user) => {
+export const addUser = (user) => {
   return {
-    type: USER_LOGIN,
+    type: ADD_USER,
     user
-  }
-}
-
-export const userLogout = (uid) => {
-  return {
-    type: USER_LOGOUT,
-    uid
   }
 }
