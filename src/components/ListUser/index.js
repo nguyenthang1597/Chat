@@ -2,13 +2,20 @@ import React, { Component } from 'react'
 import './ListUser.css'
 import ListItem from './ListItem'
 export default class ListUser extends Component {
-  
   render() {
+    const {user} = this.props;
     let list = makeList(this.props.listStates, this.props.displayNames);
     return (
       <div className='listContainer'>
+
+      <div className='username'>Chatting - {user.displayName? user.displayName : user.email.slice(0, user.email.indexOf('@'))}</div>
+
+      <div className='searchContainer'>
+        <input className='search'/>
+        <i className='material-icons'>search</i>
+      </div>
        {
-         list.map(item => item.uid !== this.props.user ? <ListItem name={item.name} state={item.state} photoURL={item.photoURL}/> : null)
+         list.map(item => item.uid !== user.uid ? <ListItem name={item.name} state={item.state} photoURL={item.photoURL}/> : null)
        }
       </div>
     )

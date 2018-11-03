@@ -17,7 +17,6 @@ export const watchDisplayNameChange = (store) => {
   db.refFromURL('https://reactchat-6d913.firebaseio.com/users/').on('value', snapshot => {
     if(snapshot.val()){
       snapshot.forEach(item => {
-        console.log(item.val())
         store.dispatch(updateDisplayName({uid: item.key, displayName: item.val().displayName, photoURL: item.val().photoURL}))
       })
     }

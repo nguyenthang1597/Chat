@@ -6,7 +6,7 @@ const mapStateToProps = state => {
   return {
     listStates: state.useronline.states,
     displayNames: state.useronline.displayNames,
-    user: state.firebase.auth.uid
+    user: state.firebase.auth
   }
 }
 
