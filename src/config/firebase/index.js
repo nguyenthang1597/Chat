@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase'
 const config = {
   apiKey: "AIzaSyDLNOkpOQfGNKnrLIwwYK3pwWRIQRKtScY",
   authDomain: "reactchat-6d913.firebaseapp.com",

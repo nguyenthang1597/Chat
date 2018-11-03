@@ -1,22 +1,40 @@
 import React, { Component } from "react";
 import "./App.css";
-import asyncComponent from "./components/asyncComponent";
 import { BrowserRouter, Switch } from "react-router-dom";
+import { createStore, compose } from "redux";
+import { Provider } from "react-redux";
+import firebase from 'firebase'
+import { reactReduxFirebase } from 'react-redux-firebase'
+import asyncComponent from "./components/asyncComponent";
 import AuthenticateComponent from "./containers/AuthenticateComponent";
 import UnauthenticateComponent from "./containers/UnauthenticateComponent";
-import { createStore, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
 import reducers from "./reducers";
-import { createLogger } from "redux-logger";
+import config from './config/firebase'
 
-const LoginPage = asyncComponent(() => import("./containers/LoginPage"));
+
+import { checkOnlineStatus } from "./modules/auth";
+import { watchStatusChange, watchDisplayNameChange } from "./modules/useronline";
+
+
+const LoginPage = asyncComponent(() => import("./components/LoginPage"));
 const Home = asyncComponent(() => import("./components/Home"));
 
+const rrfConfig = {
+  userProfile: 'users'
+}
+const createStoreWithFirebase = compose(
+  reactReduxFirebase(firebase, rrfConfig)
+)(createStore)
 
-const logger = createLogger();
-const store = createStore(reducers, applyMiddleware(logger));
 
 
+
+const store = createStoreWithFirebase(reducers)
+
+checkOnlineStatus();
+
+watchStatusChange(store);
+watchDisplayNameChange(store);
 
 export default class App extends Component {
   render() {

@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 import AuthenticateComponent from '../components/AuthenticateComponent';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({firebase: {auth}}) => {
   return {
-    User: state.auth.user
+    auth,
   }
 }
 

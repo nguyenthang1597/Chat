@@ -4,8 +4,9 @@ import ListUser from '../components/ListUser';
 
 const mapStateToProps = state => {
   return {
-    list: state.useronline.list,
-    count: state.useronline.count
+    listStates: state.useronline.states,
+    displayNames: state.useronline.displayNames,
+    user: state.firebase.auth.uid
   }
 }
 

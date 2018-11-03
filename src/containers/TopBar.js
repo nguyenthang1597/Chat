@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import TopBar from '../components/TopBar';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({firebase: {auth}}) => {
   return {
-    user: state.auth.user
+    user: auth,
+    profile: auth.providerData[0]
   }
 }
 

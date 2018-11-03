@@ -58,13 +58,8 @@ export default class LoginPage extends Component {
 
   }
 
-  handleLoginWithGoogle = () => {
-    loginWithGoogle()
-    .then(res => {
-      var token = res.credential.accessToken;
-      var user = res.user;
-      this.props.setAuth(token, user);
-    })
+  handleLoginWithGoogle = async () => {
+    await loginWithGoogle()
   }
   render() {
     return (

@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import auth from './auth';
-import useronline from './useronline';
+import {firebaseReducer} from 'react-redux-firebase'
+import useronline from './useronline'
 export default combineReducers({
-  auth,
+  firebase: firebaseReducer,
   useronline
 })
