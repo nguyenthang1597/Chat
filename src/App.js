@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter, Switch } from "react-router-dom";
-import { createStore, compose } from "redux";
+import { createStore, compose, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import firebase from 'firebase'
 import { reactReduxFirebase } from 'react-redux-firebase'
@@ -9,13 +9,14 @@ import asyncComponent from "./components/asyncComponent";
 import AuthenticateComponent from "./containers/AuthenticateComponent";
 import UnauthenticateComponent from "./containers/UnauthenticateComponent";
 import reducers from "./reducers";
+import {createLogger} from 'redux-logger'
 import config from './config/firebase'
 
 
 import { checkOnlineStatus } from "./modules/auth";
 import { watchStatusChange, watchDisplayNameChange } from "./modules/useronline";
 
-
+const logger = createLogger();
 const LoginPage = asyncComponent(() => import("./components/LoginPage"));
 const Home = asyncComponent(() => import("./components/Home"));
 
@@ -23,7 +24,7 @@ const rrfConfig = {
   userProfile: 'users'
 }
 const createStoreWithFirebase = compose(
-  reactReduxFirebase(firebase, rrfConfig)
+  reactReduxFirebase(firebase, rrfConfig), applyMiddleware(logger)
 )(createStore)
 
 
@@ -31,7 +32,7 @@ const createStoreWithFirebase = compose(
 
 const store = createStoreWithFirebase(reducers)
 
-checkOnlineStatus();
+checkOnlineStatus(store);
 
 watchStatusChange(store);
 watchDisplayNameChange(store);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './ListUser.css'
-import ListItem from './ListItem'
+import ItemList from '../../containers/ItemList'
 export default class ListUser extends Component {
   render() {
     const {user} = this.props;
@@ -15,7 +15,7 @@ export default class ListUser extends Component {
         <i className='material-icons'>search</i>
       </div>
        {
-         list.map(item => item.uid !== user.uid ? <ListItem name={item.name} state={item.state} photoURL={item.photoURL}/> : null)
+         list.map(item => item.uid !== user.uid ? <ItemList name={item.name} state={item.state} photoURL={item.photoURL} uid={item.uid}/> : null)
        }
       </div>
     )

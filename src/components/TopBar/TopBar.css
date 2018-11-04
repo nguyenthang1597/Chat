@@ -1,6 +1,7 @@
 .topbarContainer{
   display: flex;
   width: 70px;
+  min-width: 70px;
   height: 100vh;
   background-image: linear-gradient(rgb(72, 198, 239), rgb(111, 134, 214));;
   position: relative;

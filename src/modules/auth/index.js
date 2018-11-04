@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import config from '../../config/firebase'
+import { watchMessage } from '../message';
 
 const auth = config.auth();
 const db = config.database();
@@ -10,7 +11,7 @@ export const login = (email, password) => auth.signInWithEmailAndPassword(email,
 
 export const loginWithGoogle = () => auth.signInWithPopup(provider);
 
-export const checkOnlineStatus = () => {
+export const checkOnlineStatus = (store) => {
   auth.onAuthStateChanged(user => {
     var amOnline = db.refFromURL('https://reactchat-6d913.firebaseio.com/.info/connected');
     var userRef = db.refFromURL('https://reactchat-6d913.firebaseio.com/presence/' + user.uid);

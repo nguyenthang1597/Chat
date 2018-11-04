@@ -5,6 +5,7 @@
   height: 60px;
   justify-content: space-around;
   align-items: stretch;
+  cursor: pointer;
 }
 
 .itemImage{
@@ -45,6 +46,7 @@
 .onlineText{
   position: relative;
   left: 20px;
+  color: chartreuse;
 }
 
 .offline{
@@ -54,4 +56,10 @@
   border-radius: 5px;
   background-color:orange;
   margin-right: 5px;
+}
+
+.offlineText{
+  position: relative;
+  left: 20px;
+  color: orange;
 }

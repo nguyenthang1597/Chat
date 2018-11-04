@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react'
-import './ListItem.css'
-import defaultAvatar from '../../../images/defaultAvatar.jpg'
-import { setImmediate } from 'timers';
+import './ItemList.css'
+import defaultAvatar from '../../images/defaultAvatar.jpg'
 
-export default class ListItem extends React.Component {
+export default class ItemList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +19,7 @@ export default class ListItem extends React.Component {
   calc = logoutAt => {
     let sub = new Date().getTime() - new Date(logoutAt).getTime();
     let minus = Math.round(sub / 60000);
-    let hour = minus / 60;
+    let hour = Math.round(minus/60);
     if (hour < 1)
       return minus + 'm';
     else
@@ -28,8 +27,10 @@ export default class ListItem extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.state !== true)
-      this.calcTime(this.props.state);
+    if (this.props.state !== true){
+      this.setState({count: this.calc(this.props.state)}, () => this.calcTime(this.props.state))
+    }
+      
   }
 
   componentWillReceiveProps(newProps) {
@@ -43,11 +44,12 @@ export default class ListItem extends React.Component {
   }
 
   render() {
-    const { name, state, photoURL } = this.props;
+    const { name, state, photoURL, click, uid, from, filter } = this.props;
+    let imgUrl = photoURL ? photoURL : defaultAvatar;
     return (
-      <div className='itemContainer'>
+      <div className='itemContainer' onClick={() =>{ click({uid, name, imgUrl}); filter(from, uid)}}>
         <div className='itemImage'>
-          <img className='listItemImg' src={photoURL ? photoURL : defaultAvatar} />
+          <img className='listItemImg' src={imgUrl} />
         </div>
         <div className='itemInfo'>
           <div>{name}</div>
@@ -61,7 +63,7 @@ export default class ListItem extends React.Component {
             {state !== true &&
               <Fragment>
                 <div className='offline'></div>
-                <div className='onlineText'>left {this.state.count} ago</div>
+                <div className='offlineText'>left {this.state.count} ago</div>
               </Fragment>
             }
           </div>
