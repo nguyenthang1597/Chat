@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { Component } from "react";
 import "./App.css";
 import { BrowserRouter, Switch } from "react-router-dom";
@@ -56,29 +57,37 @@ export default class App extends Component {
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+=======
+import React, { Component } from 'react'
+import {BrowserRouter, Switch} from 'react-router-dom'
+import './App.css'
+import {handleUserState} from './functions'
+import AuthenticateComponent from './containers/AuthenticateComponent';
+import UnauthenticateComponent from './containers/UnauthenticateComponent';
+import asyncComponent from './containers/asyncComponent';
+>>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
 
-class App extends Component {
+const LoginPage = asyncComponent(() => import('./containers/LoginPage'));
+const Home = asyncComponent(() => import('./containers/Home'));
+
+export default class App extends Component {
+  componentDidMount(){
+    handleUserState()
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <BrowserRouter>
+        <Switch>
+          <AuthenticateComponent path="/" exact={true} component={Home} />
+          <UnauthenticateComponent path="/login" exact={true} component={LoginPage} />
+        </Switch>
+      </BrowserRouter>
+    )
   }
 }
+<<<<<<< HEAD
 
 export default App;
 >>>>>>> Initial commit from Create React App
+=======
+>>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project

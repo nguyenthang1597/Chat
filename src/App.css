@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 body{
   margin: 0;
   padding: 0;
@@ -12,17 +13,16 @@ body{
 =======
 .App {
   text-align: center;
+=======
+body {
+  padding: 0;
+  margin: 0;
+>>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root{
   display: flex;
+<<<<<<< HEAD
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -43,3 +43,7 @@ body{
   }
 }
 >>>>>>> Initial commit from Create React App
+=======
+  flex-direction: row;
+}
+>>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project

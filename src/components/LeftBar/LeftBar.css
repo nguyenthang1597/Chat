@@ -1,0 +1,26 @@
+.topbarContainer{
+  display: flex;
+  width: 70px;
+  min-width: 70px;
+  height: 100vh;
+  background-image: linear-gradient(rgb(72, 198, 239), rgb(111, 134, 214));;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.editProfile{
+  text-align: center;
+  height: 60px;
+  line-height: 60px;
+}
+
+.editProfile:hover{
+  color: blue;
+  cursor: pointer;
+}
+
+hr{
+  margin: 0;
+  padding: 0;
+}

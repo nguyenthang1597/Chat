@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import './LoginPage.css'
 import DialogBox from '../DialogBox'
+<<<<<<< HEAD
 import { login,loginWithGoogle } from '../../modules/auth'
+=======
+>>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
 import google from '../../images/google.png'
 
 export default class LoginPage extends Component {
@@ -26,7 +29,11 @@ export default class LoginPage extends Component {
     }
 
     this.setState({ loading: true, showDialog: true }, () => {
+<<<<<<< HEAD
       login(email, password)
+=======
+      this.props.firebase.login({email, password})
+>>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
         .then(res => this.props.history.push('/'))
         .catch(err => {
           let code = err.code;
@@ -59,7 +66,11 @@ export default class LoginPage extends Component {
   }
 
   handleLoginWithGoogle = async () => {
+<<<<<<< HEAD
     await loginWithGoogle()
+=======
+    this.props.firebase.login({provider: 'google', type: 'popup'})
+>>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
   }
   render() {
     return (
