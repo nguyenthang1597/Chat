@@ -2,6 +2,11 @@
 
 # dependencies
 /node_modules
+<<<<<<< HEAD
+=======
+/.pnp
+.pnp.js
+>>>>>>> Initial commit from Create React App
 
 # testing
 /coverage
@@ -19,7 +24,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+<<<<<<< HEAD
 
 .firebase/
 .firebaserc
 firebase.json
+=======
+>>>>>>> Initial commit from Create React App

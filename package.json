@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "appchat",
   "version": "0.1.0",
   "private": true,
@@ -14,13 +15,26 @@
     "react-scripts": "2.0.5",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6"
+=======
+  "name": "appchatv2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-scripts": "2.1.1"
+>>>>>>> Initial commit from Create React App
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+<<<<<<< HEAD
     "eject": "react-scripts eject",
     "deploy": "firebase deploy"
+=======
+    "eject": "react-scripts eject"
+>>>>>>> Initial commit from Create React App
   },
   "eslintConfig": {
     "extends": "react-app"
