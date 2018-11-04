@@ -1,49 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-body{
-  margin: 0;
-  padding: 0;
-  background-color: white;
-}
-
-#root{
-  display: flex;
-  flex-direction: row;
-}
-=======
-.App {
-  text-align: center;
-=======
 body {
   padding: 0;
   margin: 0;
->>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
 }
 
 #root{
   display: flex;
-<<<<<<< HEAD
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
->>>>>>> Initial commit from Create React App
-=======
   flex-direction: row;
 }
->>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project

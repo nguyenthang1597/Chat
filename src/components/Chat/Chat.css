@@ -24,31 +24,15 @@
   position: relative;
   width: 100%;
   min-height: 300px;
-<<<<<<< HEAD
-  min-height: calc(100vh - 221px);
-  overflow-y: scroll;
-  padding-top: 20px;
-=======
   min-height: calc(100vh - 222px);
   overflow-y: scroll;
   padding-top: 20px;
   border-bottom: 1px solid white;
->>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
 }
 
 .inputbox{
   position: relative;
   width: 100%;
-<<<<<<< HEAD
-  background-color: yellow;
-  min-height: 100px;
-  max-height: 100px;
-}
-
-.chatContent::-webkit-scrollbar { 
-  display: none; 
-}
-=======
   background-color:  #dedede;
   min-height: 100px;
   max-height: 100px;
@@ -96,4 +80,3 @@
 .chatContent::-webkit-scrollbar { 
   display: none; 
 }
->>>>>>> chỉnh sửa chat, thêm tiềm kiếm tên, thay đổi cấu trúc project
