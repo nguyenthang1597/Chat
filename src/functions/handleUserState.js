@@ -7,13 +7,12 @@ export default () => {
     
     amOnline.on('value', function (snapshot) {
       if (snapshot.val()) {
-        userRef.onDisconnect().set({uid: user.uid, time: firebase.database.ServerValue.TIMESTAMP, online: false});
-        userRef.set({uid: user.uid, time: firebase.database.ServerValue.TIMESTAMP, online: true});
+        userRef.onDisconnect().set({uid: user.uid, time: firebase.database.ServerValue.TIMESTAMP, online: false, displayName: user.displayName ? user.displayName : user.email.slice(0, user.email.indexOf('@')), photoURL: user.photoURL});
+        userRef.set({uid: user.uid, time: firebase.database.ServerValue.TIMESTAMP, online: true, displayName: user.displayName ? user.displayName : user.email.slice(0, user.email.indexOf('@')), photoURL: user.photoURL});
       }
     });
 
     if(user){
-      console.log('USER ID', user.uid)
       db.refFromURL(`https://reactchat-6d913.firebaseio.com/users/${user.uid}/`).set({uid: user.uid, displayName: user.displayName ? user.displayName : user.email.slice(0, user.email.indexOf('@')), photoURL: user.photoURL, email: user.email})
     }
   })

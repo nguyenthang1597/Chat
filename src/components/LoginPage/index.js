@@ -67,14 +67,14 @@ export default class LoginPage extends Component {
           <div className='title'>
             <h3>Login</h3>
           </div>
-          <div className='form'>
+          <div className='htmlForm'>
             <div className='textField'>
               <input type='text' name='email' id='email' required={true} onChange={this.handleTextChange} />
-              <label for='email'>Email</label>
+              <label htmlFor='email'>Email</label>
             </div>
             <div className='textField'>
               <input type='password' name='password' id='password' required={true} onChange={this.handleTextChange} />
-              <label for='password'>Password</label>
+              <label htmlFor='password'>Password</label>
             </div>
           </div>
           <div className='loginButton' onClick={this.handleSubmit}>
@@ -82,11 +82,11 @@ export default class LoginPage extends Component {
           </div>
           <div className='footer'>
             <div className='register'>Register</div>
-            <div className='forgetpassword'>Forget Password?</div>
+            <div className='htmlForgetpassword'>Forget Password?</div>
           </div>
           <hr/>
           <div className='loginGoogle' onClick={this.handleLoginWithGoogle}>
-            <img src={google} width={40} height={40}/>
+            <img alt='googleImg' src={google} width={40} height={40}/>
             <div>Login with Google</div>
           </div>
         </div>

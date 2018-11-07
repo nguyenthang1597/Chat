@@ -4,7 +4,7 @@ import { firebaseConnect } from 'react-redux-firebase';
 import ListUser from '../components/ListUser';
 
 const mapStateToProps = state => ({
-  users: state.firebase.data.presence,
+  users: state.firebase.data.presence || [],
   auth: state.firebase.auth,
   usersInfo: state.firebase.data.users
 })

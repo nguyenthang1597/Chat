@@ -22,7 +22,7 @@ export default class LeftBar extends Component {
         <DialogBox visible={this.state.showProfile} onClose={this.hideDialogProfile}>
           <div style={{width: 360, height: 230}}>
               <div style={{height: 110, position: 'relative', paddingLeft: 10}}>
-                <img src={profile.photoURL} width={70} height={70} style={{position:'absolute',borderRadius: '50%', top: 20}}/>
+                <img src={profile.photoURL} width={70} height={70} style={{position:'absolute',borderRadius: '50%', top: 20}} alt='avatar'/>
                 <div style={{position: 'relative', top: 51, left: 80, fontSize: 16}}>{profile.displayName}</div>
               </div>
               <div style={{position: 'relative', paddingLeft: 10, height: 30}}>Phone: 1234567890</div>

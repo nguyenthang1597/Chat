@@ -1,0 +1,1 @@
+export default (uidFrom, uidTo) => uidFrom > uidTo ? `${uidTo}${uidFrom}` : `${uidFrom}${uidTo}`
