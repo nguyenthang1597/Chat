@@ -13,7 +13,7 @@ export default ({ message, me, other }) => {
           </div>
           :
           <div className='message-data align-left'>
-            <span className="message-data-name">{other.name}</span>
+            <span className="message-data-name">{other.displayName}</span>
             <span className="message-data-time">{moment(message.time).format('HH:mm DD/MM/YYYY')}</span>
           </div>
       }
