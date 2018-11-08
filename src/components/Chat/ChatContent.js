@@ -3,7 +3,16 @@ import { compose } from 'redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import {connect} from 'react-redux'
 import Message from '../Message'
+import { createIdRoom } from '../../functions';
 class ChatContent extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      listMessage: [],
+    }
+  }
+  
   scrollToBottom = () => {
     if (typeof this.chatContent === 'undefined') return;
     let scrollHeight = this.chatContent.scrollHeight;
@@ -14,18 +23,23 @@ class ChatContent extends Component {
   componentWillUpdate() {
     this.scrollToBottom();
   }
+
+  componentWillReceiveProps(newProps){
+    let roomId = createIdRoom(newProps.me.uid, newProps.receiver.uid);
+    let listMessage = [];
+    if(newProps.messages[roomId]){
+      listMessage = Object.keys(newProps.messages[roomId]).map(item => newProps.messages[roomId][item]);
+      this.setState({listMessage})        
+      
+    }
+  }
+
   render() {
     const { messages, me, receiver } = this.props;
-    let listMessage = [];
-    if(messages){
-      listMessage = Object.keys(messages).map(item => messages[item]);
-      listMessage = Object.keys(listMessage[0]).map(item => listMessage[0][item]);
-    }
-    
     return (
       <div className='chatContent' ref={e => {this.chatContent = e}}>
         {
-          listMessage.map((item, index) => <Message key={index} message={item} me={me} other={receiver} />)
+          this.state.listMessage.map((item, index) => <Message key={index} message={item} me={me} other={receiver} />)
         }
       </div>
     )
@@ -33,6 +47,6 @@ class ChatContent extends Component {
 }
 
 export default compose(
-  firebaseConnect(props => {console.log(props); return [{ path: `messages/${props.roomId}/` }]}),
+  firebaseConnect(props => [{ path: `messages/${createIdRoom(props.me.uid, props.receiver.uid)}/` }]),
   connect(({ firebase }) => ({ messages: firebase.data.messages }))
 )(ChatContent)

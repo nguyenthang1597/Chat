@@ -63,3 +63,17 @@
   left: 20px;
   color: orange;
 }
+
+.star{
+  flex: 1;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.star i {
+  width: 30px;
+  height: 30px;
+  left: calc(50% - 15px);
+  top: calc(50% - 15px);
+}

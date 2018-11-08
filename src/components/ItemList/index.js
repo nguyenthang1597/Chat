@@ -48,12 +48,12 @@ class ItemList extends React.Component {
   }
 
   render() {
-    const { item } = this.props;
+    const { item, me } = this.props;
     let imgUrl = item.photoURL ? item.photoURL : defaultAvatar;
     return (
-      <div className='itemContainer' onClick={() => this.props.setReceiver({uid: item.uid, photoURL: item.photoURL, displayName: item.displayName})}>
+      <div className='itemContainer' onClick={() => this.props.setReceiver({ uid: item.uid, photoURL: item.photoURL, displayName: item.displayName, star: item.star })}>
         <div className='itemImage'>
-          <img className='listItemImg' src={imgUrl} alt='avatarUser'/>
+          <img className='listItemImg' src={imgUrl} alt='avatarUser' />
         </div>
         <div className='itemInfo'>
           <div>{item.displayName}</div>
@@ -72,6 +72,10 @@ class ItemList extends React.Component {
             }
           </div>
         </div>
+        <div className='star'>
+          {item.star && item.star[me] && <i style={{ cursor: 'pointer', fontSize: 30, color: 'yellow' }} className='material-icons'>star_rate</i>}
+        </div>
+
       </div>
     )
   }

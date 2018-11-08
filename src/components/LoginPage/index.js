@@ -70,11 +70,11 @@ export default class LoginPage extends Component {
           <div className='htmlForm'>
             <div className='textField'>
               <input type='text' name='email' id='email' required={true} onChange={this.handleTextChange} />
-              <label htmlFor='email'>Email</label>
+              <label for='email'>Email</label>
             </div>
             <div className='textField'>
               <input type='password' name='password' id='password' required={true} onChange={this.handleTextChange} />
-              <label htmlFor='password'>Password</label>
+              <label for='password'>Password</label>
             </div>
           </div>
           <div className='loginButton' onClick={this.handleSubmit}>

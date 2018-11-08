@@ -17,7 +17,8 @@ export default class ListUser extends Component {
     let list = null;
     if(users) {
       list =  Object.keys(users).map(item => users[item])
-      list = list.sort((a,b) => a.time < b.time ? 1 : a.time === b.time ? 0 : -1)
+      list = list.filter(item => item.uid !== auth.uid)
+      list = list.sort((a,b) => compare(a,b, auth.uid))
     }
     if(isLoaded(auth))
       return (
@@ -30,12 +31,39 @@ export default class ListUser extends Component {
           <i className='material-icons'>search</i>
         </div>
         {
-          list && (filterList(list, this.state.text)).map((item, index) => item.uid !== auth.uid ? <ItemList key={index} item={item } setReceiver={this.props.setReceiver}/> : null)
+          list && (filterList(list, this.state.text)).map((item, index) => item.uid !== auth.uid ? <ItemList key={index} item={item } setReceiver={this.props.setReceiver} me={auth.uid} /> : null)
         }
         </div>
       )
     else return null;
   }
+}
+
+const compare = (a,b, me) => {
+  if(a.star && b.star){
+    if(a.start[me] && b.star[me]) return 0;
+    if(a.start[me] && !b.star[me]) return -1;
+    if(!a.start[me] && b.star[me]) return 1;
+  }
+  if(a.star && !b.star){
+    if(a.star[me]) return -1;
+  }
+  if(!a.star && b.star){
+    if(b.star[me]) return 1;
+  }
+  if(a.online && b.online){
+    if(a.displayName < b.displayName) return -1;
+    if(a.displayName = b.displayName) return 0;
+    if(a.displayName < b.displayName) return 1;
+  }
+  if(a.online && !b.online) return -1;
+  if(!a.online && b.online) return 1;
+  if(!a.online && !b.online){
+    if(a.time > b.time) return -1;
+    if(a.time < b.time) return 1;
+  }
+
+  return 0;
 }
 
 
