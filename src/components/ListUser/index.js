@@ -53,7 +53,7 @@ const compare = (a,b, me) => {
   }
   if(a.online && b.online){
     if(a.displayName < b.displayName) return -1;
-    if(a.displayName = b.displayName) return 0;
+    if(a.displayName === b.displayName) return 0;
     if(a.displayName < b.displayName) return 1;
   }
   if(a.online && !b.online) return -1;

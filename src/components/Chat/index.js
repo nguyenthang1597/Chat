@@ -4,7 +4,6 @@ import defaultAvatar from '../../images/defaultAvatar.jpg'
 import { createIdRoom } from '../../functions';
 import ChatContent from './ChatContent';
 import DialogBox from '../DialogBox';
-import Dropzone from 'react-dropzone';
 import Uploader from '../Uploader';
 export default class Chat extends Component {
   constructor(props) {

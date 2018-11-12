@@ -35,7 +35,7 @@ class ChatContent extends Component {
   }
 
   render() {
-    const { messages, me, receiver } = this.props;
+    const { me, receiver } = this.props;
     return (
       <div className='chatContent' ref={e => {this.chatContent = e}}>
         {

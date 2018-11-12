@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { compose, withHandlers, setPropTypes } from 'recompose';
 import { firebaseConnect } from 'react-redux-firebase';
 import Dropzone from 'react-dropzone';
-import { firestore } from 'firebase';
 
 const filesPath = 'uploadedFiles';
 

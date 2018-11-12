@@ -20,10 +20,10 @@ export default ({ message, me, other }) => {
       {
         me.uid === message.from ?
           <div className='messageContent myMessage float-right align-right'>
-            {isImageUrl(message.content) ? <img style={{width: 100, height: 100}} src={message.content}/> : message.content}
+            {isImageUrl(message.content) ? <img style={{width: 100, height: 100}} alt='imagechat' src={message.content}/> : message.content}
           </div> :
           <div className='messageContent ortherMessage'>
-            {isImageUrl(message.content) ? <img style={{width: 100, height: 100}} src={message.content}/> : message.content}
+            {isImageUrl(message.content) ? <img style={{width: 100, height: 100}} alt='imagechat' src={message.content}/> : message.content}
           </div>
       }
     </div>
