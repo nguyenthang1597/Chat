@@ -13,11 +13,12 @@ export default class ListUser extends Component {
   } 
 
   render() {
-    const {users, auth} = this.props;
-    let list = null;
-    if(users) {
+    const {star, users, auth} = this.props;
+    let list = [];
+    if(users && star) {
       list =  Object.keys(users).map(item => users[item])
       list = list.filter(item => item.uid !== auth.uid)
+      list = list.map(item => ({...item, star: star[item.uid]}))
       list = list.sort((a,b) => compare(a,b, auth.uid))
     }
     if(isLoaded(auth))
@@ -40,10 +41,12 @@ export default class ListUser extends Component {
 }
 
 const compare = (a,b, me) => {
+  
   if(a.star && b.star){
-    if(a.start[me] && b.star[me]) return 0;
-    if(a.start[me] && !b.star[me]) return -1;
-    if(!a.start[me] && b.star[me]) return 1;
+    console.log("a", a.star[me])
+    console.log("b", b.star[me])
+    if(a.star[me] && !b.star[me]) return -1;
+    if(!a.star[me] && b.star[me]) return 1;
   }
   if(a.star && !b.star){
     if(a.star[me]) return -1;

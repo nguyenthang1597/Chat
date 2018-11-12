@@ -51,17 +51,17 @@ export default class Chat extends Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.receiver && newProps.me) {
-      this.props.firebase.database().ref(`/presence/${newProps.receiver.uid}/star/${newProps.me.uid}`).on('value', snapshot => {
+      this.props.firebase.database().ref(`/star/${newProps.receiver.uid}/${newProps.me.uid}`).on('value', snapshot => {
         this.setState({ star: snapshot.val() })
       })
     }
 
   }
 
-  setStar = () => this.props.firebase.database().ref(`/presence/${this.props.receiver.uid}/star/${this.props.me.uid}`).set(true);
+  setStar = () => this.props.firebase.database().ref(`/star/${this.props.receiver.uid}/${this.props.me.uid}`).set(true);
 
   unStar = () => {
-    this.props.firebase.database().ref(`/presence/${this.props.receiver.uid}/star/${this.props.me.uid}`).set(false)
+    this.props.firebase.database().ref(`/star/${this.props.receiver.uid}/${this.props.me.uid}`).set(false)
     this.forceUpdate();
   }
   render() {
