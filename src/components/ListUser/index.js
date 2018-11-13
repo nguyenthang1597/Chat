@@ -43,8 +43,6 @@ export default class ListUser extends Component {
 const compare = (a,b, me) => {
   
   if(a.star && b.star){
-    console.log("a", a.star[me])
-    console.log("b", b.star[me])
     if(a.star[me] && !b.star[me]) return -1;
     if(!a.star[me] && b.star[me]) return 1;
   }
